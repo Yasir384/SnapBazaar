@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="navbar">
+        <a href="/"><img src="logo e.png" class="logo"></a>
+        
+        <ul class="nav-links">
+            <li><a>Home </a></li>
+            <li><a>About</a></li>
+            <li><a>Contact Us</a></li>
+        </ul>
+        <div class="nav-toggle" id="hamburger">
+            <span class="line">Home</span>
+            <span class="line">About</span>
+            <span class="line">Contact</span>
+        </div>
+    </section>
+    <section class="cart-content">
+        <div class="cart-detail">
+            <div id="cart-item-container">
+                
+            </div>
+            <a class="checkout" href="cart.html">Checkout</a>
+        </div>
+        <div class="cart-tab">
+            <div class="down-arrow n-sel"></div>
+            <div class="cart n-sel"></div>
+            <div id="cart-total" class="n-sel cart-count">2</div>
+        </div>
+    </section>
+    <section class="shop col-12">
+        <div class="filtersContainer">
+            <div class="filters">
+                <button onclick="setFilters(`all`)">All</button>
+                <button onclick="setFilters(`men's clothing`)">Men</button>
+                <button onclick="setFilters(`jewelery`)">Jewelery</button>
+                <button onclick="setFilters(`electronics`)">Electronics</button>
+                <button onclick="setFilters(`women's clothing`)">Women</button>
+            </div>
+        </div>
+        <div class="container"></div>
+    </section>
+
+
+    <div class="container"></div>
+
+
+
+
+
+
+
+    <script src="app.js"></script>
+    <script src="nav.js"></script>
+</body>
+
+</html>

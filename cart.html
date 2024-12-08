@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+    <div class="cartPage">
+        <section class="navbar">
+            <a href="/"><img src="logo e.png" class="logo"></a>
+            <ul class="nav-links">
+                <li><a>Home </a></li>
+                <li><a>About</a></li>
+                <li><a>Contact Us</a></li>
+            </ul>
+            <div class="nav-toggle" id="hamburger">
+                <span class="line">Home</span>
+                <span class="line">About</span>
+                <span class="line">Contact</span>
+            </div>
+        </section>
+        <section class="cart-content">
+            <div class="cart-detail">
+                <div id="cart-item-container">
+                </div>
+                <a class="checkout" href="cart.html">Checkout</a>
+            </div>
+            <div class="cart-tab">
+                <div class="down-arrow n-sel"></div>
+                <div class="cart n-sel"></div>
+                <div id="cart-total" class="n-sel cart-count">2</div>
+            </div>
+        </section>
+        <div class="body">
+            <div class="cartContainer">
+                <div class="shoppingCart">
+                    <div class="cartHeading">
+                        <h1>Shopping Cart</h1>
+                        <span><span id="cartItem"></span> item(s)</span>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="price">Price</th>
+                                <th>Qty</th>
+                                <th class="subtotal">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartLine">
+
+                        </tbody>
+                    </table>
+
+                    <div class="giftOptions">
+                        <h3>Gift options</h3>
+                        <p>Pick a paper of your choice (optional)</p>
+                        <label><input type="checkbox"> Gift Receipt</label>
+                        <label><input type="checkbox"> Printed card</label>
+                    </div>
+
+                    <div class="giftCardsWrapper">
+                        <h3>Gift Cards</h3>
+                        <div class="giftCards">
+                            <input type="text" placeholder="Enter the gift card code">
+                            <button>ADD GIFT CARD</button>
+                        </div>
+                    </div>
+
+                    <div class="discountCodeWrapper">
+                        <h3>Apply Discount Code</h3>
+                        <div class="discountCode">
+                            <input type="text" placeholder="Enter discount code">
+                            <button>APPLY DISCOUNT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="orderSummary">
+                    <h2>Order Summary</h2>
+                    <div class="shippingOptions">
+                        <h3>Estimate Shipping and Tax</h3>
+                        <label>Country</label>
+                        <select>
+                            <option>United States</option>
+                        </select>
+                        <label>State/Province</label>
+                        <select>
+                            <option>State/Province</option>
+                        </select>
+                        <label>Zip/Postal Code</label>
+                        <input type="text" placeholder="Zip/Postal Code">
+                    </div>
+                    <div class="amount_wrapper">
+                        <div class="flatRate">
+                            <input type="radio" name="shipping" checked> Flat Rate ($5.00)
+                        </div>
+                        <div class="bestWay">
+                            <input type="radio" name="shipping"> Best Way (Table Rate $15.00)
+                        </div>
+                    </div>
+                    <div class="totalPrice">
+                        <p>Subtotal <span id="subtotal">$7,600.00</span></p>
+                        <p>Shipping <span>$5.00</span></p>
+                        <p class="total">Order Total <span id="orderTotal">$7,605.00</span></p>
+                    </div>
+                    <div class="proceed_section">
+                        <button>PROCEED TO CHECKOUT</button>
+                        <span>Check Out with Multiple Addresses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shippingContainer">
+            <div>
+                <img src="https://www.svgrepo.com/show/60587/fast-delivery.svg" height="30" width="30" alt="delivery">
+                <p>Free <br>U.S. Shipping</p>
+            </div>
+            <div>
+                <img src="https://www.svgrepo.com/show/158198/return.svg" height="30" width="30" alt="return">
+                <p>30 DAY <br> FREE RETURN</p>
+            </div>
+            <div>
+                <img src="https://static.thenounproject.com/png/1063365-200.png" height="30" width="30" alt="FINANCING">
+                <p>FINANCING <br>AVAILABLE</p>
+            </div>
+            <div>
+                <img src="https://pic.onlinewebfonts.com/thumbnails/icons_397927.svg" height="30" width="30"
+                    alt="delivery">
+                <p>Authenticity<br>Guaranteed</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="nav.js"></script>
+    <script>
+        function cartRender() {
+            let subtotal = 0
+            document.getElementById("cartItem").innerText = cart.length
+            const cartLine = document.getElementById("cartLine")
+            cartLine.innerHTML = ''
+            if (cart.length) {
+                cart.map(item => {
+                    subtotal += Number(item.quantity) * Number(item.price)
+                    cartLine.innerHTML += `<tr>
+                                <td class="imageTitle">
+                                    <img src="${item.image}"
+                                        alt="Watch">
+                                    <p>${item.title}</p>
+                                </td>
+                                <td class="price">$${Math.ceil(item.price)}</td>
+                                <td class="qty"><input onchange="cartPageUpdation(${item.id}, this)" type="number" value="${item.quantity}"></td>
+                                <td class="subtotal">$${Math.ceil(Number(item.price) * Number(item.quantity))}</td>
+                            </tr>`
+                })
+                document.getElementById("subtotal").innerText = `$${Math.ceil(subtotal)}`
+                document.getElementById("orderTotal").innerText = `$${Math.ceil(subtotal + 5)}`
+            }
+            else {
+                cartLine.innerHTML = `<p>Your cart is empty <a href="/">Click here</a> to add products</p>`
+            }
+        }
+        cartRender()
+        function cartPageUpdation(id, ele) {
+            updateCart(id, ele)
+            cartRender()
+        }
+    </script>
+</body>
+
+</html>
