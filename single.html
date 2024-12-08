@@ -113,7 +113,7 @@
 
                 function addToCart() {
                     const id = res.id; // Product ID
-                    const quantity = parseInt(quantityInput.value); // Get quantity from input field
+                    const quantity = parseInt(quantityInput.value); 
 
                     if (isNaN(quantity) || quantity <= 0) {
                         alert("Please enter a valid quantity.");
@@ -136,10 +136,8 @@
                         });
                     }
 
-                    // Save the updated cart to localStorage
                     localStorage.setItem("cart", JSON.stringify(cart));
 
-                    // Update cart count in the navbar
                     updateCartCount();
                     updateCartPopup()
                 }
