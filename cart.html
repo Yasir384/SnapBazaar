@@ -12,7 +12,7 @@
 <body>
     <div class="cartPage">
         <section class="navbar">
-            <a href="/"><img src="logo e.png" class="logo"></a>
+            <a href="/SnapBazaar"><img src="logo e.png" class="logo"></a>
             <ul class="nav-links">
                 <li><a>Home </a></li>
                 <li><a>About</a></li>
@@ -164,7 +164,7 @@
                 document.getElementById("orderTotal").innerText = `$${Math.ceil(subtotal + 5)}`
             }
             else {
-                cartLine.innerHTML = `<p>Your cart is empty <a href="/">Click here</a> to add products</p>`
+                cartLine.innerHTML = `<p>Your cart is empty <a href="/SnapBazaar">Click here</a> to add products</p>`
             }
         }
         cartRender()
